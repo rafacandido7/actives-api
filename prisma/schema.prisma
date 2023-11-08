@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  ADMIN
+  SUPPORT
+}
+
+model User {
+  id          String        @id @default(uuid()) @db.Uuid
+  name        String
+  email       String        @unique
+  password    String
+  type        UserType
+  SupportCall SupportCall[]
+
+  @@map("users")
+}
+
+enum HealthStatus {
+  CRITICAL
+  WARNING
+  HEALTY
+}
+
+model Active {
+  id           String       @id @default(uuid()) @db.Uuid
+  name         String
+  description  String
+  healthStatus HealthStatus
+  totalValue   Float
+  lifeTime     String
+
+  Dependency  Dependency[]
+  SupportCall SupportCall[]
+
+  @@map("actives")
+}
+
+model Dependency {
+  id           String       @id @default(uuid()) @db.Uuid
+  activeId     String       @db.Uuid
+  name         String
+  description  String
+  healthStatus HealthStatus
+  value        Float
+  lifeTime     String
+
+  active      Active        @relation(fields: [activeId], references: [id], onDelete: Cascade)
+  SupportCall SupportCall[]
+
+  @@map("dependencies")
+}
+
+enum Urgency {
+  CRITICAL
+  WARNING
+  HEALTY
+}
+
+enum SupportType {
+  ACTIVE
+  DEPENDENCY
+}
+
+model SupportCall {
+  id           String      @id @default(uuid()) @db.Uuid
+  userId       String      @db.Uuid
+  name         String
+  report       String
+  urgency      Urgency
+  supportType  SupportType
+  activeId     String      @db.Uuid
+  dependencyId String      @db.Uuid
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  active     Active     @relation(fields: [activeId], references: [id], onDelete: Cascade)
+  dependency Dependency @relation(fields: [dependencyId], references: [id], onDelete: Cascade)
+
+  @@map("support_calls")
+}

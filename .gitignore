@@ -2,6 +2,9 @@
 /dist
 /node_modules
 
+# secrets
+.env
+
 # Logs
 logs
 *.log
@@ -34,6 +37,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Locks
+# lock
 yarn.lock
 bun.lockb

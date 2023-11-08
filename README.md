@@ -1,6 +1,6 @@
 <div align="center">
 
-# Controle de Finanças
+# GenActive
 
 [![GitHub License](https://img.shields.io/github/license/rafacandido7/fincheck-api)](https://github.com/rafacandido7/fincheck-api/LICENSE)
 [![NestJS](https://img.shields.io/badge/NestJS-10.0.0-E0234E)](https://nestjs.com/)
@@ -16,7 +16,6 @@ Um backend robusto e flexível para a sua aplicação de controle de finanças c
 
 ## Visão Geral
 
-Breve visão geral do seu projeto de controle de finanças. (em breve....)
 
 ### Funcionalidades
 
@@ -31,7 +30,7 @@ Breve visão geral do seu projeto de controle de finanças. (em breve....)
 
 ## Pré-requisitos
 
-- Node.js (v16+)
+- Node.js (v18+)
 - npm ou yarn
 - PostgreSQL (v13+)
 
@@ -73,7 +72,6 @@ yarn start:dev
 6. O servidor estará disponível em http://localhost:3111.
 
 ## Uso
-Descrever como usar o seu backend para a aplicação de controle de finanças. (em breve....)
 
 ## Contribuição
 Sinta-se à vontade para contribuir com este projeto. Abra um pull request ou reporte problemas na seção de Issues.

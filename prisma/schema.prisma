@@ -69,15 +69,22 @@ enum SupportType {
   DEPENDENCY
 }
 
+enum SupportCallStatus {
+  PENDING
+  ONGOIND
+  FINISHED
+}
+
 model SupportCall {
-  id           String      @id @default(uuid()) @db.Uuid
-  userId       String      @db.Uuid
+  id           String            @id @default(uuid()) @db.Uuid
+  userId       String            @db.Uuid
   name         String
   report       String
   urgency      Urgency
   supportType  SupportType
-  activeId     String      @db.Uuid
-  dependencyId String      @db.Uuid
+  activeId     String            @db.Uuid
+  dependencyId String            @db.Uuid
+  status       SupportCallStatus
 
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   active     Active     @relation(fields: [activeId], references: [id], onDelete: Cascade)

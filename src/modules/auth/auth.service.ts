@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 
-import { UsersRepository } from '@/shared/database/repositories/user.repositories'
+import { UsersRepository } from '@/shared/database/repositories/user.repository'
 
 import { SignInDto, SignUpDto } from './dto/sign.dto'
 

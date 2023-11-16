@@ -16,7 +16,7 @@ import { ActivesService } from './actives.service'
 import { CreateActiveDto } from './dto/create-active.dto'
 import { UpdateActiveDto } from './dto/update-active.dto'
 
-@ApiTags('actives')
+@ApiTags('Actives')
 @Controller('actives')
 export class ActivesController {
   constructor(private readonly activesService: ActivesService) {}
@@ -54,7 +54,7 @@ export class ActivesController {
     type: UpdateActiveDto,
   })
   findOne(@Param('id') id: string) {
-    return this.activesService.findOne(id)
+    return this.activesService.findOne({ id })
   }
 
   @Put(':id')

@@ -4,7 +4,7 @@ import { ApiResponse, ApiParam } from '@nestjs/swagger'
 import { CreateActiveDto } from './dto/create-active.dto'
 import { UpdateActiveDto } from './dto/update-active.dto'
 
-import { ActivesRepository } from '@/shared/database/repositories/actives.repositories'
+import { ActivesRepository } from '@/shared/database/repositories/actives.repository'
 
 @Injectable()
 export class ActivesService {
@@ -13,7 +13,7 @@ export class ActivesService {
   @ApiResponse({
     status: 201,
     description: 'The active has been successfully created.',
-    type: CreateActiveDto,
+    type: UpdateActiveDto,
   })
   async create(createActiveDto: CreateActiveDto) {
     const { name, description, healthStatus, lifeTime } = createActiveDto
@@ -37,7 +37,7 @@ export class ActivesService {
   @ApiResponse({
     status: 200,
     description: 'This action returns all actives',
-    type: [CreateActiveDto],
+    type: [UpdateActiveDto],
   })
   async findAll() {
     return await this.activesRepository.findMany({})
@@ -51,9 +51,9 @@ export class ActivesService {
   @ApiResponse({
     status: 200,
     description: 'This action returns details of the active',
-    type: CreateActiveDto,
+    type: UpdateActiveDto,
   })
-  async findOne(id: string) {
+  async findOne({ id }: { id: string }) {
     return await this.activesRepository.findFirst({
       where: { id },
     })
@@ -67,7 +67,7 @@ export class ActivesService {
   @ApiResponse({
     status: 200,
     description: 'This action updates an active',
-    type: CreateActiveDto,
+    type: UpdateActiveDto,
   })
   async update(id: string, updateActiveDto: UpdateActiveDto) {
     const { name, lifeTime, healthStatus, description } = updateActiveDto
@@ -84,7 +84,7 @@ export class ActivesService {
     example: 'c467aa4d-470e-4da0-b616-65382a11cb1a',
   })
   @ApiResponse({
-    status: 200,
+    status: 204,
     description: 'This action removes an active',
   })
   async remove(id: string) {

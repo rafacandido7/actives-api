@@ -6,9 +6,10 @@ import { AuthGuard } from '@/modules/auth/auth.guard'
 import { AuthModule } from '@/modules/auth/auth.module'
 
 import { DatabaseModule } from '@/shared/database/database.module'
+import { ActivesModule } from './modules/actives/actives.module'
 
 @Module({
-  imports: [UsersModule, DatabaseModule, AuthModule],
+  imports: [UsersModule, DatabaseModule, AuthModule, ActivesModule],
   providers: [
     {
       provide: APP_GUARD,

@@ -34,7 +34,6 @@ model Active {
   name         String
   description  String
   healthStatus HealthStatus
-  totalValue   Float
   lifeTime     String
 
   Dependency  Dependency[]

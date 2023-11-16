@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator'
 
-import { HealthStatusEntity } from '../entities/HealthStatus.entity'
+import { HealthStatusType } from '../entities/HealthStatus.entity'
 
 export class CreateActiveDto {
   @ApiProperty({ description: 'Name of the active', example: 'Server123' })
@@ -19,12 +19,12 @@ export class CreateActiveDto {
 
   @ApiProperty({
     description: 'Health status of the active',
-    enum: HealthStatusEntity,
-    example: HealthStatusEntity.HEALTY,
+    enum: HealthStatusType,
+    example: HealthStatusType.HEALTY,
   })
   @IsNotEmpty()
-  @IsEnum(HealthStatusEntity)
-  healthStatus: HealthStatusEntity
+  @IsEnum(HealthStatusType)
+  healthStatus: HealthStatusType
 
   @ApiProperty({ description: 'Lifetime of the active', example: '2023-12-31' })
   @IsNotEmpty()

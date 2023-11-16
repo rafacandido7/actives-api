@@ -54,7 +54,7 @@ export class DependenciesController {
     type: UpdateDependencyDto,
   })
   findOne(@Param('id') id: string) {
-    return this.dependenciesService.findOne(id)
+    return this.dependenciesService.findOne({ id })
   }
 
   @Get('/active/:activeId')

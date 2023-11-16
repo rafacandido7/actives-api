@@ -8,11 +8,10 @@ datasource db {
 }
 
 model User {
-  id          String        @id @default(uuid()) @db.Uuid
-  name        String
-  email       String        @unique
-  password    String
-  SupportCall SupportCall[]
+  id       String @id @default(uuid()) @db.Uuid
+  name     String
+  email    String @unique
+  password String
 
   @@map("users")
 }
@@ -54,7 +53,7 @@ model Dependency {
 enum Urgency {
   CRITICAL
   WARNING
-  HEALTY
+  NORMAL
 }
 
 enum SupportType {
@@ -70,7 +69,6 @@ enum SupportCallStatus {
 
 model SupportCall {
   id           String            @id @default(uuid()) @db.Uuid
-  userId       String            @db.Uuid
   name         String
   report       String
   urgency      Urgency
@@ -79,7 +77,6 @@ model SupportCall {
   dependencyId String            @db.Uuid
   status       SupportCallStatus
 
-  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   active     Active     @relation(fields: [activeId], references: [id], onDelete: Cascade)
   dependency Dependency @relation(fields: [dependencyId], references: [id], onDelete: Cascade)
 

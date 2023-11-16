@@ -7,5 +7,6 @@ import { ActivesModule } from '../actives/actives.module'
   controllers: [DependenciesController],
   providers: [DependenciesService],
   imports: [ActivesModule],
+  exports: [DependenciesService],
 })
 export class DependenciesModule {}

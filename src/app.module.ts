@@ -8,6 +8,7 @@ import { DependenciesModule } from '@/modules/dependencies/dependencies.module'
 import { DatabaseModule } from '@/shared/database/database.module'
 
 import { ActivesModule } from '@/modules/actives/actives.module'
+import { SupportCallModule } from './modules/support-call/support-call.module'
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ActivesModule } from '@/modules/actives/actives.module'
     AuthModule,
     ActivesModule,
     DependenciesModule,
+    SupportCallModule,
   ],
   providers: [
     {

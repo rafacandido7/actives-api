@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { ApiResponse, ApiParam } from '@nestjs/swagger'
 
 import { CreateActiveDto } from './dto/create-active.dto'
 import { UpdateActiveDto } from './dto/update-active.dto'
@@ -10,11 +9,6 @@ import { ActivesRepository } from '@/shared/database/repositories/actives.reposi
 export class ActivesService {
   constructor(private readonly activesRepository: ActivesRepository) {}
 
-  @ApiResponse({
-    status: 201,
-    description: 'The active has been successfully created.',
-    type: UpdateActiveDto,
-  })
   async create(createActiveDto: CreateActiveDto) {
     const { name, description, healthStatus, lifeTime } = createActiveDto
 
@@ -34,41 +28,16 @@ export class ActivesService {
     return newActive
   }
 
-  @ApiResponse({
-    status: 200,
-    description: 'This action returns all actives',
-    type: [UpdateActiveDto],
-  })
   async findAll() {
     return await this.activesRepository.findMany({})
   }
 
-  @ApiParam({
-    name: 'id',
-    description: 'ID of the active',
-    example: 'c467aa4d-470e-4da0-b616-65382a11cb1a',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'This action returns details of the active',
-    type: UpdateActiveDto,
-  })
   async findOne({ id }: { id: string }) {
     return await this.activesRepository.findFirst({
       where: { id },
     })
   }
 
-  @ApiParam({
-    name: 'id',
-    description: 'ID of the active',
-    example: 'c467aa4d-470e-4da0-b616-65382a11cb1a',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'This action updates an active',
-    type: UpdateActiveDto,
-  })
   async update(id: string, updateActiveDto: UpdateActiveDto) {
     const { name, lifeTime, healthStatus, description } = updateActiveDto
 
@@ -78,15 +47,6 @@ export class ActivesService {
     })
   }
 
-  @ApiParam({
-    name: 'id',
-    description: 'ID of the active',
-    example: 'c467aa4d-470e-4da0-b616-65382a11cb1a',
-  })
-  @ApiResponse({
-    status: 204,
-    description: 'This action removes an active',
-  })
   async remove(id: string) {
     await this.activesRepository.delete({
       where: { id },

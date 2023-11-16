@@ -5,7 +5,7 @@ import { UsersService } from './users.service'
 
 import { ActiveUserId } from '@/shared/decorators/ActiveUserId'
 
-@ApiTags('users')
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

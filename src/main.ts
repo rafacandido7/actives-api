@@ -19,6 +19,9 @@ async function bootstrap() {
       'The Actives API offers comprehensive functionalities for administering technological assets in an Information Technology environment. Designed to facilitate efficient control of hardware, software, and other essential resources, the API provides a flexible and secure interface for performing essential asset management operations.',
     )
     .setVersion('1.0')
+    .addTag('Auth')
+    .addTag('actives')
+    .addTag('users')
     .build()
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('docs', app, document)

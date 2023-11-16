@@ -1,12 +1,4 @@
-import {
-  IsEmail,
-  IsEnum,
-  IsNotEmpty,
-  IsString,
-  MinLength,
-} from 'class-validator'
-
-import { UserType } from '../entities/UserType.entity'
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 
 export class SignUpDto {
@@ -26,11 +18,6 @@ export class SignUpDto {
   @IsNotEmpty()
   @MinLength(8)
   password: string
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsEnum(UserType)
-  type: UserType
 }
 
 export class SignInDto {

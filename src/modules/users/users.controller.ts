@@ -10,7 +10,7 @@ import { ActiveUserId } from '@/shared/decorators/ActiveUserId'
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiOperation({ description: 'Get jwt user token' })
+  @ApiOperation({ description: 'Get User info when recives jwt token' })
   @Get('/me')
   async me(@ActiveUserId() userId: string) {
     return await this.usersService.getUserById(userId)
